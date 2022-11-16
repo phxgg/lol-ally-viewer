@@ -16,6 +16,7 @@ app_port = None
 auth_token = None
 region = None
 lcu_name = None  # LeagueClientUx executable name
+showNotInChampSelect = True
 
 # functions
 def getLCUName():
@@ -60,6 +61,8 @@ def getLCUArguments():
 
 
 def main():
+    global showNotInChampSelect
+    
     # get LeagueClient name
     getLCUName()
 
@@ -94,7 +97,9 @@ def main():
 
         # if 'httpStatus' in r and r['httpStatus'] == 404:
         if 'errorCode' in r:
-            print('Not in champ select.')
+            if showNotInChampSelect:
+                print('Not in champ select. Waiting for game...')
+                showNotInChampSelect = False
             sleep(2)
         else:
             print('\n* Found lobby. *\n')
@@ -109,6 +114,7 @@ def main():
 
                 print(r['displayName'] + ' joined the lobby')
 
+            showNotInChampSelect = True
             break
 
     # keep main thread alive
