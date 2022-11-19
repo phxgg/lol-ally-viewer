@@ -19,12 +19,6 @@ riotclient_auth_token = None
 riotclient_app_port = None
 region = None
 lcu_name = None  # LeagueClientUx executable name
-lcu_api = None
-riotclient_api = None
-riotclient_headers = None
-lcu_headers = None
-lcu_session_token = None
-riotclient_session_token = None
 showNotInChampSelect = True
 
 # functions
@@ -85,7 +79,7 @@ def clear():
 
 
 def main():
-    global showNotInChampSelect, lcu_api, riotclient_api, riotclient_headers, lcu_headers, lcu_session_token, riotclient_session_token
+    global showNotInChampSelect
 
     # get LeagueClient name
     getLCUName()
